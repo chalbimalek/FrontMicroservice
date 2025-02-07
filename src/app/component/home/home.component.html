@@ -1,0 +1,57 @@
+<!--<div *ngIf="isAuth; else notLoggedIn">
+  <h1>Welcome {{ userInformations?.preferred_username || 'User' }}!</h1>
+  <button (click)="onLogout()">Logout</button>
+  <button (click)="ManagedAccount()">Manage Account</button>
+  <div *ngIf="isAppManager()">
+    <p>You have the 'app-manager' role.</p>
+  </div>
+</div>
+
+<ng-template #notLoggedIn>
+  <h1>Please log in</h1>
+  <button (click)="onLogin()">Login</button>
+</ng-template>-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/home">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLink="/one">MicroOne</a>
+      <a class="nav-item nav-link" routerLink="/two">MicroTwo</a>
+      <a class="nav-item nav-link" routerLink="/addAnnonce">addAnnonce</a>
+      <a class="nav-item nav-link" routerLink="/ListeAnnonce">ListeAnnonce</a>
+      <!--  <a class="nav-item nav-link " style="color: red">{{username}}</a>
+        <button  (click)="logout()">Logout</button>
+        <button  (click)="account()">Manage account</button>
+        <button  routerLink="/user">Manage account User</button>
+        <button (click)="navigateToSignup()">Register</button>-->
+        <button *ngIf="isLoggedIn" (click)="logout()" class="btn btn-secondary">Logout</button>
+        <button *ngIf="isLoggedIn" (click)="updatepassword()" class="btn btn-secondary">update password</button>
+        <button (click)="deleteUser()">Supprimer mon compte</button>
+
+
+        <div *ngIf="roles.length > 0">
+          <h3>User Roles</h3>
+          <ul>
+            <li *ngFor="let role of roles" >
+
+              {{ role.name }}
+            </li>
+          </ul>
+        </div>
+        <div *ngIf="roles.length === 0">
+          <p>No roles found for this user.</p>
+        </div>
+
+    </div>
+  </div>
+</nav>
+<div class="single-widget ">
+  <div class="map-container">
+    <div class="map-frame">
+      <div id="map"></div>
+    </div>
+  </div>
+</div>

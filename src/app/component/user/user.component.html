@@ -1,0 +1,10 @@
+<form (ngSubmit)="onSubmit()" #userForm="ngForm">
+  <input type="text" placeholder="Username" [(ngModel)]="newUser.username" name="username" required>
+  <input type="email" placeholder="Email" [(ngModel)]="newUser.email" name="email" required>
+  <input type="text" placeholder="First Name" [(ngModel)]="newUser.firstName" name="firstName" required>
+  <input type="text" placeholder="Last Name" [(ngModel)]="newUser.lastName" name="lastName" required>
+  <input type="password" placeholder="Password" [(ngModel)]="newUser.password" name="password" required>
+  <div *ngIf="errorMessage" style="color: red;"  class="error-message">{{ errorMessage }}</div>
+
+  <button type="submit" [disabled]="userForm.invalid">Create User</button>
+</form>

@@ -1,0 +1,71 @@
+<div class="container mt-5">
+  <div class="row">
+      <div class="col-6">
+
+          <div class="card image-container p-3">
+              <img [src]="annonce.imageModels[selectAnnonceIndex].url"  style="width: 80%; height: 100%; margin: auto;" alt="">
+          </div>
+          <div class="mt-2">
+              <mat-grid-list cols="3" gutterSize="10" rowHeight="1:1">
+                  <mat-grid-tile *ngFor="let file of annonce.imageModels; let i = index" (click)="changeIndex(i)" style="border: 1px solid lightgrey; cursor: pointer;"
+                  >
+                      <img [src]="file.url" style="height: 150px;" alt="">
+                  </mat-grid-tile>
+              </mat-grid-list>
+
+          </div>
+
+
+      </div>
+      <div class="col-6">
+<mat-card class="product-card">
+  <mat-card-content>
+
+    <div class="mt-3">
+      <h2>{{annonce.pays}}</h2>
+    </div>
+    <div class="mt-3">
+      <h4>ville  :{{annonce.ville}}</h4>
+    </div>
+    <div class="mt-3">
+      Description: <br>
+      {{annonce.description}}
+    </div>
+
+    <div class="mt-3">
+      <b style="color: blueviolet;">prix {{ annonce.montantContrubition }} dt</b> &nbsp;
+    </div>
+    <p class="location">
+      <i class="lni lni-map-marker"></i> adresse <a href="javascript:void(0)">{{annonce.addresse}} </a>
+    </p>
+    <hr>
+    <p class="h5">typeLogement  {{annonce.typeLogement}}</p>
+
+    <p class="h3" style="color: red;">nbrChambre  {{annonce.nbrChambre}} </p>
+    <p class="h3" style="color: rgb(12, 45, 117);">User: {{ username }}</p>
+
+    <hr>
+    <div class="mt-5 text-center">
+      &nbsp;
+      <button style="width: 200px;" >Reserver</button>
+
+  </div>
+  &nbsp;
+
+
+
+
+
+
+
+  </mat-card-content>
+</mat-card>
+
+
+
+</div>
+<!-- chatbot.component.html -->
+<div id="df-root"></div>
+
+
+</div>

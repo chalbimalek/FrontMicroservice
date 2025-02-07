@@ -1,0 +1,161 @@
+
+   <!-- Start Dashboard Section -->
+   <section class="category-page section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-12">
+                <!-- Start Dashboard Sidebar -->
+
+                <!-- Start Dashboard Sidebar -->
+            </div>
+            <div class="col-lg-9 col-md-8 col-12">
+                <div class="main-content">
+                    <!-- Start Post Ad Block Area -->
+                    <div class="dashboard-block mt-0">
+                        <div >
+                        <div class="inner-block">
+                            <!-- Start Post Ad Tab -->
+
+
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+
+                                      <div class="col-xl-6">
+                                        <div class="card-body p-md-1 text-black">
+                                          <h3 class="mb-4 text-uppercase">Ajouter Annonce </h3>
+                              <form  enctype="multipart/form-data"(submit)="ajouterAnnonce1()" >
+                                <div class="row">
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="form3Example1m"> nombre chambre</label>
+                                        <input class="form-control " type="number" id="form3Example1m" name="name" [(ngModel)]="requestData.nbrChambre" required minlength="3" maxlength="8" #name="ngModel">
+                                        <div *ngIf="name.invalid && (name.dirty || name.touched)" style="color: #dc3545; font-size: 0.875rem; margin-top: 0.25rem;">
+                                            <div *ngIf="name.errors && name.errors['required']">nbrChambre is required.</div>
+                                            <div *ngIf="name.errors && name.errors['minlength']">nbrChambre must be at least 3 characters long.</div>
+                                            <div *ngIf="name.errors && name.errors['maxlength']">nbrChambre cannot exceed 20 characters.</div>
+                                          </div>
+
+                                        </div>
+                                        </div>
+
+                                        <div class="row">
+                                          <div class="form-outline mb-4">
+                                          <label class="form-label" for="form3Example82"> description</label>
+                                          <textarea class="form-control" id="form3Example82" name="description"  [(ngModel)]="requestData.description" required minlength="1" maxlength="10" #description="ngModel"></textarea>
+                                          <div *ngIf="description.invalid && (description.dirty || description.touched)" style="color: #dc3545; font-size: 0.875rem; margin-top: 0.25rem;">
+                                            <div *ngIf="description.errors && description.errors['required']">description is required.</div>
+                                            <div *ngIf="description.errors && description.errors['minlength']">description must be at least 5 characters long.</div>
+                                            <div *ngIf="description.errors && description.errors['maxlength']">description cannot exceed 8 characters.</div>
+                                          </div>
+
+                                          </div>
+                                          </div>
+
+                                          <div class="form-outline mb-4">
+                                            <label class="form-label" for="form3Example1n">date Disponibility</label>
+                                            <input class="form-control" type="date" id="form3Example1n" name="numero"  [(ngModel)]="requestData.date_disponiblite" required pattern="[0-9]{8}" #numero="ngModel">
+
+                                          </div>
+
+
+                                          <select class="form-select" id="categorySelect" name="category" [(ngModel)]="requestData.typeLogement" required >
+                                            <option value="" disabled selected>Choisissez une catégorie</option>
+                                            <option *ngFor="let type of ['STUDIO', 'APPARTEMENT', 'MAISON', 'VILLA']" [value]="type">{{ type }}</option>
+                                          </select>
+
+
+                                          <div class="form-outline mb-4">
+                                            <label class="form-label" for="form3Example1n">prix</label>
+                                            <input class="form-control" type="number" id="form3Example1n" name="numero"  [(ngModel)]="requestData.montantContrubition" required pattern="[0-9]{8}" #numero="ngModel">
+                                            <div *ngIf="numero.invalid && (numero.dirty || numero.touched)" style="color: #dc3545; font-size: 0.875rem; margin-top: 0.25rem;">
+                                                <div *ngIf="numero.errors && numero.errors['required']">prix is required.</div>
+                                            </div>
+                                          </div>
+
+
+                                          <div class="form-outline mb-4">
+                                            <label class="mb-3" for="form3Example86">Images</label>
+
+                                                <div class="dropzone" appDrag (files)="fileDropped($event)">
+                                                    <div class="text-wrapper">
+                                                        <div class="centered" >
+                                                        Drag and Drop your file or
+                                                        <a (click)="selectfile.click()" class="browse-button">browse</a> a file
+                                                    </div>
+                                                </div>
+                                                </div>
+
+                                          <input class="form-control" style="display: none;" #selectfile type="file" id="form3Example86" value="select" required (change)="onFileSelectedd($event)">
+                                          <div class="mt-5">
+                                            <div class="row">
+                                                <mat-grid-list cols="4" rowHeight="1:1">
+                                                    <mat-grid-tile *ngFor="let file of requestData.imageModels ; let i =index;">
+                                                            <div style="position: relative;">
+                                                                <span class="btn-remove-image" (click)="removeImage(i)">x</span>
+                                                                <img [src]="file.url" alt="100px" width="100px">
+
+                                                            </div>
+                                                    </mat-grid-tile>
+                                                </mat-grid-list>
+
+                                            </div>
+                                          </div>
+
+                                          <form [formGroup]="newCollocationFormGroup" enctype="multipart/form-data" (submit)="ajouterAnnonce1()">
+                                            <div class="form-outline mb-4">
+                                                <label class="form-label" for="form3Example1m">Adresse</label>
+                                                <input formControlName="addresse" class="form-control" type="text" required>
+                                            </div>
+                                            <div class="form-outline mb-4">
+                                                <label class="form-label" for="form3Example1m">Ville</label>
+                                                <input formControlName="ville" class="form-control" type="text" required>
+                                            </div>
+                                            <div class="form-outline mb-4">
+                                                <label class="form-label" for="form3Example1m">Pays</label>
+                                                <input formControlName="pays" class="form-control" type="text" required>
+                                            </div>
+                                        </form>
+
+
+
+                                        </div>
+
+                                        <div class="col-6 category-sidebar" style="padding-top: 2%;">
+
+                                          <div class="single-widget ">
+                                            <div class="map-container">
+                                              <div class="map-frame">
+                                                <div id="map"></div>
+                                              </div>
+                                            </div>
+                                          </div>
+
+
+                                    </div>
+
+                                <button class="btn btn-info btn-round  btn-lg" type="submit" >   Add   </button>
+
+                              </form>
+                            <!--  </div>
+                              </div>
+                              </div>
+                              </div>
+                              </div>-->
+                            </div>
+                              </div>
+                              </div>
+                                </div>
+                            </div>
+                            </div>
+                            <!-- End Post Ad Tab -->
+                        </div>
+                    </div>
+                    <!-- End Post Ad Block Area -->
+                </div>
+        </div>
+    </div>
+</section>
+
+
+
+

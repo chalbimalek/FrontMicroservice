@@ -1,0 +1,46 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Liste des Appartements</h2>
+
+  <div *ngIf="Annonces && Annonces.length > 0; else noData">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let annonce of Annonces">
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="image">
+              <img [src]="annonce.imageModels[0].url" alt="#" class="product-image image-size">
+              <ng-container *ngIf=" annonce.imageModels.length > 1">
+                  <div class="plus-icon">
+                    +
+                  </div>
+                </ng-container>
+              <i class=" cross-badge lni lni-bolt"></i>
+          </div>
+            <h5 class="card-title"> adressse :{{ annonce.addresse }}, ville : {{ annonce.ville }}</h5>
+            <p class="card-text"><strong>Pays:</strong> {{ annonce.pays }}</p>
+            <p class="card-text"><strong>Disponibilité:</strong> {{ annonce.date_disponiblite }}</p>
+            <p class="card-text"><strong>Chambres:</strong> {{ annonce.nbrChambre }}</p>
+            <p class="card-text"><strong>Type:</strong> {{ annonce.typeLogement }}</p>
+            <p class="card-text"><strong>Montant:</strong> {{ annonce.montantContrubition }} €</p>
+            <p class="card-text">{{ annonce.description }}</p>
+            <button class="btn btn-primary" (click)="goToannonce(annonce.idApp)">Voir plus</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noData>
+    <p class="text-center text-danger">Aucune annonce trouvée.</p>
+  </ng-template>
+</div>
+
+
+
+
+
+
+
+
+
+
+

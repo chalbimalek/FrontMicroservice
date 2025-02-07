@@ -1,0 +1,18 @@
+<div class="container">
+  <h2>Add Product</h2>
+  <form (ngSubmit)="addProduct()">
+    <div>
+      <label for="nom">Product Name</label>
+      <input id="nom" type="text" [(ngModel)]="product.nom" name="nom" required>
+    </div>
+
+    <div>
+      <label for="prix">Price</label>
+      <input id="prix" type="number" [(ngModel)]="product.prix" name="prix" required>
+    </div>
+
+    <button type="submit">Add Product</button>
+  </form>
+  <a class="nav-item nav-link" routerLink="/home">home</a>
+
+</div>
