@@ -23,7 +23,7 @@ export class AnnonceService {
   }
 
   getAllAppartements(): Observable<Annonce[]> {
-    return this.http.get<Annonce[]>(`${this.apiUrl}/all`);
+    return this.http.get<Annonce[]>("http://localhost:8083/annonce/reservations");
   }
 
 

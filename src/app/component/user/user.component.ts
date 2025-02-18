@@ -33,7 +33,8 @@ export class UserComponent implements OnInit {
     email: '',
     firstName: '',
     lastName: '',
-    password: ''
+    password: '',
+    role:''
   };
   errorMessage: string | null = null;
   onSubmit() {

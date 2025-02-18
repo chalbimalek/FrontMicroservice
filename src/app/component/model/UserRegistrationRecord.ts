@@ -4,6 +4,7 @@ export interface UserRegistrationRecord {
   email: string;
   password: string;
   firstName: string; // Optional field
-  lastName: string;  // Optional field
+  lastName: string;
+  role:string ; // Optional field
   // Add any other fields you need
 }

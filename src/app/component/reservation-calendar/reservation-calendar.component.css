@@ -1,0 +1,6 @@
+/* Réduire la taille du calendrier */
+#calendar-container {
+  width: 70%;  /* Ajuste la largeur (peut être 50%, 60%, etc.) */
+  height: 20vw; /* Ajuste la hauteur selon tes besoins */
+  margin: auto; /* Centrer le calendrier */
+}

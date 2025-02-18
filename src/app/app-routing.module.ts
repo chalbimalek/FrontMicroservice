@@ -14,6 +14,8 @@ import { ListeAnnonceComponent } from './component/liste-annonce/liste-annonce.c
 import { DetailsAnnonceComponent } from './component/details-annonce/details-annonce.component';
 import { Annonce } from './component/model/Annonce';
 import { AnnonceResolveService } from './service/annonce-resolve.service';
+import { ReservationCalendarComponent } from './component/reservation-calendar/reservation-calendar.component';
+import { NotificationComponent } from './component/notification/notification.component';
 
 const routes: Routes = [
   { path: '',   redirectTo: '/login', pathMatch: 'full' },
@@ -30,7 +32,8 @@ const routes: Routes = [
 
   {path:'sendemail',component:RequestPasswordResetComponent},
   {path:'updatepass',component:PasswordUpdateComponent},
-
+  {path:'calendar',component:ReservationCalendarComponent},
+  {path:'notif',component:NotificationComponent},
 
 
 ];

@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,7 +17,6 @@ import { UserService } from './service/user.service';
 import { PasswordUpdateComponent } from './password-update/password-update.component';
 import { RequestPasswordResetComponent } from './request-password-reset/request-password-reset.component';
 import { AddProductComponent } from './component/add-product/add-product.component';
-import { NotificationsComponent } from './component/notifications/notifications.component';
 import { RxStompService, StompService } from '@stomp/ng2-stompjs';
 import { AddannonceComponent } from './component/addannonce/addannonce.component';
 import { ListeAnnonceComponent } from './component/liste-annonce/liste-annonce.component';
@@ -27,6 +26,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { DetailsAnnonceComponent } from './component/details-annonce/details-annonce.component';
 import { MatCardModule } from '@angular/material/card';
+import { NotificationComponent } from './component/notification/notification.component';
+import { ReservationCalendarComponent } from './component/reservation-calendar/reservation-calendar.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 @NgModule({
   declarations: [
@@ -39,13 +41,17 @@ import { MatCardModule } from '@angular/material/card';
     PasswordUpdateComponent,
     RequestPasswordResetComponent,
     AddProductComponent,
-    NotificationsComponent,
+
     AddannonceComponent,
     ListeAnnonceComponent,
     DragDirective,
     ShowdialogComponent,
-    DetailsAnnonceComponent
+    DetailsAnnonceComponent,
+    NotificationComponent,
+    ReservationCalendarComponent
   ],
+  schemas: [ NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA ],
+
   imports: [
     BrowserModule,
     MatGridListModule ,
@@ -54,7 +60,8 @@ import { MatCardModule } from '@angular/material/card';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    FullCalendarModule
   ],
   providers: [
 

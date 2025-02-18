@@ -27,7 +27,7 @@ export class UserService {
 
 
   createUser(userData: UserRegistrationRecord): Observable<UserRegistrationRecord> {
-    return this.http.post<UserRegistrationRecord>("http://localhost:8083/users/add", userData)
+    return this.http.post<UserRegistrationRecord>("http://localhost:8083/user/users/add", userData)
     .pipe(
       catchError(this.handleError)
     );
@@ -110,7 +110,10 @@ export class UserService {
   sendVerificationEmail(userId: string): Observable<void> {
     return this.http.put<void>(`${this.API_URL}/${userId}/send-verify-email`, {});
   }
-
+ getToken(){
+  const token= localStorage.getItem('access_token');
+     token;
+ }
   getUserIdFromToken(): string {
     const token = localStorage.getItem('access_token');
     if (token) {

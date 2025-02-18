@@ -1,0 +1,38 @@
+<div class="notification-container">
+  <h2>Notifications</h2>
+
+  <div *ngIf="notifications.length === 0">Aucune notification disponible.</div>
+
+  <ul *ngIf="notifications.length > 0">
+    <li *ngFor="let notification of notifications">
+      <div class="notification">
+        <p>{{ notification.message}}</p>
+        <button (click)="accept(notification.reservationId)" >Accepter</button>
+        <button (click)="reject(notification.reservationId)" >Refuser</button>
+      </div>
+
+    </li>
+  </ul>
+</div>
+<!-- notification.component.html -->
+<div>
+  <h2>Notifications</h2>
+
+  <!-- Liste des notifications reçues -->
+  <div *ngFor="let notification of notifications">
+    <p><strong>{{ notification.message }}</strong></p>
+    <p>Advertiser ID: {{ notification.advertiserId }}</p>
+    <p>Prop ID: {{ notification.propid }}</p>
+    <p>Reservation ID: {{ notification.reservationId }}</p>
+  </div>
+
+  <h3>Envoyer une nouvelle notification</h3>
+
+  <!-- Formulaire pour envoyer une nouvelle notification -->
+  <input [(ngModel)]="newNotification.message" placeholder="Message" />
+  <input [(ngModel)]="newNotification.advertiserId" placeholder="Advertiser ID" />
+  <input [(ngModel)]="newNotification.propid" placeholder="Prop ID" />
+  <input [(ngModel)]="newNotification.reservationId" placeholder="Reservation ID" type="number" />
+
+  <button (click)="sendNotification()">Envoyer</button>
+</div>

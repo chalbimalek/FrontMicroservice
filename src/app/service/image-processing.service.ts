@@ -38,8 +38,8 @@ export class ImageProcessingService {
 
 public dataURIToblob(picBytes:any,imageType:any){
 
-  console.log(picBytes)
-  console.log(imageType)
+  //console.log(picBytes)
+  //console.log(imageType)
 
 
   const byteString=window.atob(picBytes);
