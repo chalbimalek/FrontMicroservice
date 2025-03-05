@@ -28,7 +28,7 @@
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form3Example1m"> nombre chambre</label>
-                                        <input class="form-control " type="number" id="form3Example1m" name="name" [(ngModel)]="requestData.nbrChambre" required minlength="3" maxlength="8" #name="ngModel">
+                                        <input class="form-control " type="number" id="form3Example1m" name="name" [(ngModel)]="requestData.chambre" required minlength="3" maxlength="8" #name="ngModel">
                                         <div *ngIf="name.invalid && (name.dirty || name.touched)" style="color: #dc3545; font-size: 0.875rem; margin-top: 0.25rem;">
                                             <div *ngIf="name.errors && name.errors['required']">nbrChambre is required.</div>
                                             <div *ngIf="name.errors && name.errors['minlength']">nbrChambre must be at least 3 characters long.</div>
@@ -50,17 +50,21 @@
 
                                           </div>
                                           </div>
-
                                           <div class="form-outline mb-4">
-                                            <label class="form-label" for="form3Example1n">date Disponibility</label>
-                                            <input class="form-control" type="date" id="form3Example1n" name="numero"  [(ngModel)]="requestData.date_disponiblite" required pattern="[0-9]{8}" #numero="ngModel">
+                                            <label class="form-label" for="form3Example1n">date Fin</label>
+                                            <input class="form-control" type="date" id="form3Example1n" name="numero"  [(ngModel)]="requestData.date_debut" required pattern="[0-9]{8}" #numero="ngModel">
+
+                                          </div>
+                                          <div class="form-outline mb-4">
+                                            <label class="form-label" for="form3Example1n">date Fin</label>
+                                            <input class="form-control" type="date" id="form3Example1n" name="numero"  [(ngModel)]="requestData.date_Fin" required pattern="[0-9]{8}" #numero="ngModel">
 
                                           </div>
 
 
                                           <select class="form-select" id="categorySelect" name="category" [(ngModel)]="requestData.typeLogement" required >
                                             <option value="" disabled selected>Choisissez une catégorie</option>
-                                            <option *ngFor="let type of ['STUDIO', 'APPARTEMENT', 'MAISON', 'VILLA']" [value]="type">{{ type }}</option>
+                                            <option *ngFor="let type of ['LOGEMENTENTIER', 'chambre']" [value]="type">{{ type }}</option>
                                           </select>
 
 
@@ -155,7 +159,6 @@
         </div>
     </div>
 </section>
-
 
 
 

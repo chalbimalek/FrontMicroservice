@@ -1,0 +1,30 @@
+<div class="form-outline mb-4">
+  <label class="mb-3" for="form3Example86">Images</label>
+
+      <div class="dropzone" appDrag (files)="fileDropped($event)">
+          <div class="text-wrapper">
+              <div class="centered" >
+              Drag and Drop your file or
+              <a (click)="selectfile.click()" class="browse-button">browse</a> a file
+          </div>
+      </div>
+      </div>
+
+<input class="form-control" style="display: none;" #selectfile type="file" id="form3Example86" value="select" required (change)="onFileSelectedd($event)">
+<div class="mt-5">
+  <div class="row">
+      <mat-grid-list cols="4" rowHeight="1:1">
+          <mat-grid-tile *ngFor="let file of requestData.imageModels ; let i =index;">
+                  <div style="position: relative;">
+                      <span class="btn-remove-image" (click)="removeImage(i)">x</span>
+                      <img [src]="file.url" alt="100px" width="100px">
+
+                  </div>
+          </mat-grid-tile>
+      </mat-grid-list>
+      <button type="button" class="btn btn-secondary" (click)="goBack()">Retour à l'étape 2</button>
+
+      <button type="button" class="btn btn-primary" (click)="addimage()">Ajouter l annonce</button>
+
+  </div>
+</div>

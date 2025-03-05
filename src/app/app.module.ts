@@ -29,6 +29,16 @@ import { MatCardModule } from '@angular/material/card';
 import { NotificationComponent } from './component/notification/notification.component';
 import { ReservationCalendarComponent } from './component/reservation-calendar/reservation-calendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { MesannoncesComponent } from './mesannonces/mesannonces.component';
+import { Step1Component } from './component/AjouterAnnonce/step1/step1.component';
+import { Step2Component } from './component/AjouterAnnonce/step2/step2.component';
+import { Step3Component } from './component/AjouterAnnonce/step3/step3.component';
+import { Step4Component } from './component/AjouterAnnonce/step4/step4.component';
+import { MapannoncesComponent } from './component/mapannonces/mapannonces.component';
+import { VerifyemailComponent } from './component/verifyemail/verifyemail.component';
+import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +58,17 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     ShowdialogComponent,
     DetailsAnnonceComponent,
     NotificationComponent,
-    ReservationCalendarComponent
+    ReservationCalendarComponent,
+    HeaderComponent,
+    FooterComponent,
+    MesannoncesComponent,
+    Step1Component,
+    Step2Component,
+    Step3Component,
+    Step4Component,
+    MapannoncesComponent,
+    VerifyemailComponent,
+    ResetPasswordComponent
   ],
   schemas: [ NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA ],
 

@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
 import Swal from 'sweetalert2';
 import * as L from 'leaflet';
+import { NotificationService } from 'src/app/service/notification.service';
+import { Notification } from '../model/Notification';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -11,16 +14,34 @@ import * as L from 'leaflet';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  notifications: Notification[] = [];
+ private notificationsSubject = new BehaviorSubject<Notification[]>([]);  // Type BehaviorSubject pour les notifications
+  notifications$ = this.notificationsSubject.asObservable();
   ngOnInit(): void {
    // this.getUserRoles();
-  }
+
+   const userId = this.authService.getUserIdFromToken();
+
+   // Récupérer les notifications depuis le serveur (liste en mémoire)
+   this.notificationService.getNotifications(userId).subscribe((notifications: Notification[]) => {
+    // Ajouter les notifications récupérées à l'observable pour les afficher
+    this.notificationsSubject.next(notifications);
+    console.log('🔔 Notifications récupérées depuis le serveur :', notifications);
+  });
+
+  this.notificationService.connect();
+
+  // Souscrire aux notifications reçues
+  this.notificationService.notifications$.subscribe((notifications) => {
+    this.notifications = notifications;
+  });
+}
 
   roles: any[] = [];
   isLoggedIn: boolean = true;
   errorMessage: string = '';
 
-  constructor(private authService: UserService, private router: Router,private httpClient:HttpClient) {}
+  constructor(private notificationService :NotificationService,private authService: UserService, private router: Router,private httpClient:HttpClient) {}
 
 
   getUserRoles(): void {

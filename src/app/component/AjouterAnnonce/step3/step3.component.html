@@ -1,0 +1,38 @@
+<h3>Étape 3 : Adresse et Description</h3>
+<form [formGroup]="newCollocationFormGroup" (ngSubmit)="submitStep3()">
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form3Example1m">Numéro</label>
+    <input formControlName="numero" class="form-control" type="text" required>
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form3Example1m">Description</label>
+    <textarea formControlName="description" class="form-control" rows="3" required></textarea>
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form3Example1m">Adresse</label>
+    <input formControlName="addresse" class="form-control" type="text" required>
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form3Example1m">Ville</label>
+    <input formControlName="ville" class="form-control" type="text" required>
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form3Example1m">Pays</label>
+    <input formControlName="pays" class="form-control" type="text" required>
+  </div>
+  <div class="form-buttons">
+    <button type="button" class="btn btn-secondary" (click)="goBack()">Retour à l'étape 3</button>
+    <button type="submit" class="btn btn-primary">Ajouter et Passer à l'étape 4</button>
+  </div>
+  <!-- Add other inputs if necessary, like description, etc. -->
+</form>
+<div class="col-6 category-sidebar" style="padding-top: 2%;">
+  <div class="single-widget">
+    <div class="map-container">
+      <div class="map-frame">
+        <div id="map"></div>
+      </div>
+    </div>
+  </div>
+</div>
+

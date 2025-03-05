@@ -60,3 +60,15 @@
     </div>
   </div>
 </div>
+<div *ngIf="notifications.length > 0">
+  <h3>🔔 Notifications</h3>
+  <ul>
+    <li *ngFor="let notification of notifications">
+      {{ notification.message }}
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="notifications.length === 0">
+  <p>Aucune notification pour le moment.</p>
+</div>

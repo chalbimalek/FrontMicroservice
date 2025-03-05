@@ -1,4 +1,167 @@
+<app-header>  </app-header>
+<body>
+
+
+  <!-- End Breadcrumbs -->
+
+  <!-- Start Category -->
+  <section class="category-page section">
+      <div class="container">
+          <div class="row">
+
+              <div class=" col-12">
+                  <div class="category-grid-list">
+                      <div class="row">
+                          <div class="col-12">
+                            <div class="single-widget search">
+
+                              <div class="d-flex justify-content-center" style="margin-top: 10px;">
+                                <div class="input-group" style="width: 500px;">
+                                    <input  class="form-control" type="search" placeholder="Rechercher par zone...">
+                                    <span style="background-color: #D6A328;border-radius: 50%;" class="input-group-text"><i style="color: antiquewhite;" class="fas fa-search"></i></span>
+
+                                </div>
+                            </div>
+
+
+
+
+                          </div>
+                            <div class="filter-section mb-4">
+                              <div class="buttons-container">
+                                <button class="filter-icon"><i class="fas fa-filter"></i></button>
+                                  <button class="filter-btn">Arrivée</button>
+                                  <button class="filter-btn">Départ</button>
+                                  <button class="filter-btn">Prix</button>
+                                  <button class="filter-btn ">Filtrer</button>
+                                  <button class="filter-btn-icon1"><i class="fas fa-search"></i></button>
+
+                              </div>
+                          </div>
+
+                          <div class="filter-section mb-4">
+                            <div class="buttons-container1">
+                              <button class="filter-cat" (click)="filterByCategorie('MAISON')">
+                                <i class="fas fa-home"></i> Maison
+                              </button>
+                              <button class="filter-cat" (click)="filterByCategorie('APPARTEMENT')">
+                                <i class="fas fa-building"></i> Appartement
+                              </button>
+                              <button class="filter-cat" (click)="filterByCategorie('Vacances')">
+                                <i class="fas fa-umbrella-beach"></i> Vacances
+                              </button>
+                              <button class="filter-cat" (click)="filterByCategorie('Chambres')">
+                                <i class="fas fa-bed"></i> Chambres
+                              </button>
+                            </div>
+                          </div>
+
+
+                             <!--    <div class="category-grid-topbar">
+                                  <div class="row align-items-center">
+                                   <div class="col-lg-6 col-md-6 col-12">
+                                          <h3 class="title">Showing 1-12 of 21 ads found</h3>
+                                      </div>
+
+                                  </div>
+                              </div>-->
+
+
+                              <div class="tab-content" id="nav-tabContent" >
+                                  <div class="tab-pane fade show active" id="nav-grid" role="tabpanel"
+                                      aria-labelledby="nav-grid-tab">
+                                      <div class="row" >
+                                          <div class="col-lg-3 col-md-6 col-12"  *ngFor="let annonce of Annonces">
+                                              <!-- Start Single Item -->
+                                              <div class="single-item-grid" >
+                                                  <div class="image">
+                                                      <img [src]="annonce.imageModels[0].url" alt="#" class="product-image image-size"(click)="goToannonce(annonce.idApp)" >
+
+                                                  </div>
+                                                  <div class="content" >
+                                                      <a  href="javascript:void(0)" class="tag"></a>
+                                                      <h3 class="title">
+                                                          <a href="item-details.html"></a>
+                                                      </h3>
+                                                      <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                                              </i>{{ annonce.ville }},{{annonce.ville}}</a></p>
+                                                      <ul class="info" >
+                                                          <ul class="product-info">
+                                                              <li>{{ annonce.montantContrubition }} dt</li>
+
+                                                            </ul>
+
+
+
+                                                      </ul>
+
+                                                  </div>
+                                              </div>
+
+                                              <!-- End Single Item -->
+                                          </div>
+
+                                      </div>
+
+                              <script>
+                                  window.embeddedChatbotConfig = {
+                                    chatbotId: "c4_fFbFsL-cYs9-NvhrVk",
+                                    domain: "www.chatbase.co",
+                                  };
+                                </script>
+                                <script
+                                  src="https://www.chatbase.co/embed.min.js"
+                                  chatbotId="c4_fFbFsL-cYs9-NvhrVk"
+                                  domain="www.chatbase.co"
+                                  defer></script>
+
+                                      <div class="row">
+                                          <div class="col-12">
+                                              <!-- Pagination
+                                              <div class="pagination left">
+                                                  <ul class="pagination-list">
+                                                      <li><a href="javascript:void(0)">1</a></li>
+                                                      <li class="active"><a href="javascript:void(0)">2</a></li>
+                                                      <li><a href="javascript:void(0)">3</a></li>
+                                                      <li><a href="javascript:void(0)">4</a></li>
+                                                      <li><a href="javascript:void(0)"><i class="lni lni-chevron-right"></i></a></li>
+                                                  </ul>
+                                              </div>
+                                              End Pagination -->
+                                          </div>
+                                      </div>
+                                  </div>
+
+
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+
+
+  <!-- Start Footer Area -->
+<app-footer></app-footer>
+  <!--/ End Footer Area -->
+
+  <!-- ========================= scroll-top ========================= -->
+
+
+  <!-- ========================= JS here ========================= -->
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/wow.min.js"></script>
+  <script src="assets/js/tiny-slider.js"></script>
+  <script src="assets/js/glightbox.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+
+<!--
 <div class="container mt-4">
+
   <h2 class="text-center mb-4">Liste des Appartements</h2>
 
   <div *ngIf="Annonces && Annonces.length > 0; else noData">
@@ -35,7 +198,7 @@
 </div>
 
 
-
+-->
 
 
 

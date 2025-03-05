@@ -18,7 +18,8 @@ export class NotificationComponent implements OnInit {
     message: '',
     advertiserId: '',
     propid: '',
-    reservationId: 0
+    reservationId: 0,
+    createdAt:new Date()
   };
 
 
@@ -40,7 +41,7 @@ export class NotificationComponent implements OnInit {
   // Fonction pour envoyer une notification
   sendNotification() {
     this.notificationService.sendNotification(this.newNotification);
-    this.newNotification = { id: 0, message: '', advertiserId: '', propid: '', reservationId: 0 };  // Réinitialiser la notification
+    this.newNotification = { id: 0, message: '', advertiserId: '', propid: '', reservationId: 0 ,createdAt:new Date()};  // Réinitialiser la notification
   }
 /*  ngOnInit(): void {
    // this.getNotifications();

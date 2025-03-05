@@ -32,6 +32,16 @@ export class UserService {
       catchError(this.handleError)
     );
   }
+  updatePasswordWithToken(token: string, newPassword: string): Observable<void> {
+    const accessToken = localStorage.getItem('access_token');
+
+    const headers = new HttpHeaders({
+        'Authorization': accessToken ? `Bearer ${accessToken}` : ''
+    });
+
+    return this.http.put<void>(`${this.API_URL}/reset-password`, { token, newPassword }, { headers });
+}
+
 
 
   requestPasswordReset(username: string): Observable<any> {
@@ -47,6 +57,8 @@ export class UserService {
 
     try {
       const response = await axios.post(`${this.keycloakUrl}/token`, data);
+      const token = response.data.access_token;
+      sessionStorage.setItem('access_token', token);
       return response.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -111,11 +123,11 @@ export class UserService {
     return this.http.put<void>(`${this.API_URL}/${userId}/send-verify-email`, {});
   }
  getToken(){
-  const token= localStorage.getItem('access_token');
-     token;
+  const token= sessionStorage.getItem('access_token');
+   return  token;
  }
   getUserIdFromToken(): string {
-    const token = localStorage.getItem('access_token');
+    const token = sessionStorage.getItem('access_token');
     if (token) {
       const decoded: any = jwt_decode(token);
       console.log(decoded.sub);

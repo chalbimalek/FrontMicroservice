@@ -1,0 +1,16 @@
+
+<h2>Ajouter un Appartement</h2>
+
+<div >
+  <h3>Étape 1 : Choisir la catégorie</h3>
+  <form [formGroup]="form" (ngSubmit)="submitStep1()">
+    <label for="categorie">Catégorie :</label>
+    <select id="categorie" formControlName="categorie" required>
+      <option value="APPARTEMENT">Appartement</option>
+      <option value="MAISON">Maison</option>
+      <option value="Vacances">Vacances</option>
+    </select>
+
+    <button type="submit" class="btn btn-primary">Valider Étape 1</button>
+  </form>
+</div>

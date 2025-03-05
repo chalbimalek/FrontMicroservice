@@ -1,0 +1,44 @@
+
+.login-button ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start; /* Aligner à gauche */
+}
+
+.login-button li {
+  display: inline;
+  gap:10px
+
+}
+
+.login-button a {
+  text-decoration: none;
+  padding: 5px 10px; /* Rendre les boutons plus petits */
+  border-radius: 5px;
+  background-color: #fff;
+  color: #000;
+  font-size: 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap:10px
+}
+
+.login-button a:hover {
+  color: #D6A328;
+}
+
+/* Style pour l'icône */
+.login-button a i {
+  font-size: 16px;
+  color: #D6A328;
+}
+
+ .fa-bell {
+  font-size: 20px; /* Taille de l'icône */
+  color: #333;
+}
+
+/* Style du bouton 'me' */

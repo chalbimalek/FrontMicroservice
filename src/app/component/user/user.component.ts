@@ -36,13 +36,20 @@ export class UserComponent implements OnInit {
     password: '',
     role:''
   };
+  setRole(role: string) {
+    this.newUser.role = role;
+  }
   errorMessage: string | null = null;
   onSubmit() {
+    if (!this.newUser.role) {
+      this.errorMessage = "Veuillez sélectionner un rôle";
+      return;
+    }
     console.log('Form submitted', this.newUser);
     this.userService.createUser(this.newUser).subscribe(
       (res: any) => {
         console.log('User successfully created:', res);
-        this.errorMessage = null;
+        this.errorMessage = '';
         this.router.navigate(['/']);
       },
       (err) => {

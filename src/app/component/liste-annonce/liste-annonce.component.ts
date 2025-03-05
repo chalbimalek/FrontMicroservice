@@ -48,25 +48,30 @@ export class ListeAnnonceComponent implements OnInit {
   document.head.appendChild(script);
 }
 
- Data !:Annonce[]
 
  ngOnInit(): void {
-  this.getAllProduct()
+  this.getAllProduct();
+  this.filterByCategorie('');
 
  }
-  listeAnnonce() {
-    this.Annonceservice.getAllAppartements().subscribe(
-     (response:Annonce[]) => {
-        this.Data=response;
-        console.log('Annonce recuperée avec succès', response);
-        console.log("image ",this.annonce.imageModels[0].url); // Vérifier l'URL dans la console
-
+ filterByCategorie(categorie: string): void {
+  this.Annonceservice.getAppartementsByCategorie(categorie)
+    .pipe(
+      map((x: Annonce[], i) => x.map((product: Annonce) => this.imageProcessingService.createImages(product)))
+    )
+    .subscribe(
+      (data: Annonce[]) => {
+        this.Annonces = data; // Mise à jour des annonces avec les images traitées
+        console.log(data);
       },
-      error => {
-        console.error('Erreur lors de la recuperation de la réservation', error);
+      (error) => {
+        console.error(error);
       }
     );
-  }
+}
+
+ 
+
   /////////////////////////////////////////////////////////////////////////////////////////////////
   p:number=1;
   searchTerm: string='' ;

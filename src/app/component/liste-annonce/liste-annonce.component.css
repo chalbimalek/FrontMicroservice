@@ -58,6 +58,118 @@ height: 200px; /* Hauteur fixe de l'image */
 object-fit: cover; /* Ajuster la taille de l'image pour remplir le conteneur tout en préservant le rapport hauteur/largeur */
 }
 .selected-button {
-background-color: #3366ff; /* Couleur de fond du bouton sélectionné */
+background-color: #D6A328; /* Couleur de fond du bouton sélectionné */
 color: white; /* Couleur du texte du bouton sélectionné */
+}
+
+
+
+/* Style pour la section des filtres avec les boutons */
+.filter-section {
+  margin-bottom: 20px;
+}
+
+/* Conteneur des boutons */
+.buttons-container {
+  display: flex;
+  justify-content: space-between; /* Les boutons occupent toute la largeur */
+}
+/* Conteneur des boutons */
+.buttons-container1 {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Les boutons occupent toute la largeur */
+}
+
+/* Style des boutons */
+.filter-btn {
+  margin-top: 5vw;
+  width: 25%; /* Chaque bouton occupe 24% de la largeur, avec 1% de marge entre eux */
+  height: 3vw;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 5px;
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.filter-cat {
+  margin-top: 1vw;
+  width: 10%; /* Chaque bouton occupe 24% de la largeur, avec 1% de marge entre eux */
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 5px;
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.filter-icon {
+  margin-top: 5vw;
+  width: 10%; /* Chaque bouton occupe 24% de la largeur, avec 1% de marge entre eux */
+  height: 3vw;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 5px;
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+}
+.filter-btn-icon1 {
+  margin-top: 5vw;
+  width: 10%; /* Chaque bouton occupe 24% de la largeur, avec 1% de marge entre eux */
+  height: 3vw;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 5px;
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+  background-color: #D6A328;
+  color: white;
+  border: none;
+}
+
+.filter-btn:hover {
+  background-color: #D6A328;
+  color: white;
+}
+
+.filter-cat:hover {
+  background-color: #D6A328;
+  color: white;
+}
+.filter-btn-icon1:hover {
+  background-color: #D6A328;
+  color: white;
+}
+
+/* Ajout d'un effet de survol pour les boutons */
+.filter-btn:hover {
+  background-color: #D6A328;
+  border-color: #D6A328;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .buttons-container {
+      flex-direction: column;
+  }
+
+  .filter-btn {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+}
+.filter-btn i {
+  font-size: 16px; /* Taille des icônes */
 }

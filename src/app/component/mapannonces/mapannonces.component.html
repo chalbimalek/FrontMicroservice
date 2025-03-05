@@ -1,0 +1,19 @@
+<div class="single-widget">
+  <div class="map-container">
+    <div class="map-frame">
+      <div id="map" #map></div>
+    </div>
+  </div>
+
+  <!-- Custom Popup/Modal -->
+  <div *ngIf="selectedPopup" class="custom-popup">
+    <div class="popup-content">
+      <h3>{{ selectedPopup.ville }}</h3>
+      <p>{{ selectedPopup.addresse }}</p>
+      <img [src]="selectedPopup.imageUrl" alt="Annonce Image" style="width:100px; height:auto;">
+      <br>
+      <button (click)="details(selectedPopup.idApp)">Details</button>
+      <button (click)="closePopup()">Close</button>
+    </div>
+  </div>
+</div>

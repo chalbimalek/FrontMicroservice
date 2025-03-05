@@ -1,0 +1,54 @@
+<header class="header navbar-area">
+  <div class="container">
+      <div class="row align-items-center">
+          <div class="col-lg-12">
+              <div class="nav-inner">
+                  <nav class="navbar navbar-expand-lg">
+                      <a class="navbar-brand" >
+                          <img src="assets/images/BEEHIVE.png" alt="Logo">
+                      </a>
+
+                      <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                          <ul id="nav" class="navbar-nav ms-auto">
+                             <!-- Menu items can go here -->
+                          </ul>
+                      </div> <!-- navbar collapse -->
+
+                      <div class="login-button">
+                          <ul>
+                              <li>
+                                  <a routerLink="/login"> S'inscrire</a>
+                              </li>
+                              <li>
+                                  <a routerLink="/step1">mettre mon logement</a>
+                              </li>
+                          </ul>
+                      </div>
+                      <button *ngIf="isLoggedIn" (click)="logout()" class="btn btn-secondary">Logout</button>
+
+                      <i style="margin-bottom: 20px;margin-left: 10vw;" class="fas fa-bell"></i>
+
+                      <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                        <ul id="nav" class="navbar-nav ms-auto">
+
+                            <!-- Espace entre l'icône notification et le bouton 'me' -->
+                            <li class="nav-item">
+                                <a class="dd-menu collapsed" href="javascript:void(0)"
+
+                                   aria-label="Toggle navigation">Me</a>
+                                <ul class="sub-menu collapse" id="submenu-1-3">
+                                    <li class="nav-item"><a routerLink="/Carpooling">Add Carpooling</a></li>
+                                    <li class="nav-item"><a routerLink="/listCarpooling">List Carpooling</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                  </nav> <!-- navbar -->
+              </div>
+          </div>
+      </div> <!-- row -->
+
+  </div> <!-- container -->
+</header>

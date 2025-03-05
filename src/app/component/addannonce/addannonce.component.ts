@@ -4,7 +4,7 @@ import { AnnonceService } from 'src/app/service/annonce.service';
 import { Observable, Subscriber } from 'rxjs';
 import { FileHandle } from '../model/FileHandle';
 import { DomSanitizer } from '@angular/platform-browser';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import * as L from 'leaflet';
 import { HttpClient } from '@angular/common/http';
 
@@ -19,8 +19,9 @@ export class AddannonceComponent {
     addresse: '',
     ville: '',
     pays: '',
-    date_disponiblite: new Date(),
-    nbrChambre: 0,
+    date_Fin:new Date,
+    date_debut:new Date,
+       chambre: 0,
     imageModels: [],
     typeLogement: TypeLogement.APPARTEMENT,
     description: '',
@@ -33,17 +34,46 @@ export class AddannonceComponent {
   file = [];
 
     newCollocationFormGroup!: FormGroup;
+    form: FormGroup;
 
-  constructor(private  httpClient:HttpClient,private Annonceservice: AnnonceService, private sannitizer: DomSanitizer) {
-    this.newCollocationFormGroup = new FormGroup({
-      addresse: new FormControl(''),
-      ville: new FormControl(''),
-      pays: new FormControl('')
-    });
-  }
+    constructor(private fb: FormBuilder, private httpClient: HttpClient, private Annonceservice: AnnonceService, private sannitizer: DomSanitizer) {
+      this.newCollocationFormGroup = new FormGroup({
+        addresse: new FormControl(''),
+        ville: new FormControl(''),
+        pays: new FormControl(''),
+
+      });
+      this.form = this.fb.group({
+        categorie: [''],
+        montantContribution: [''],  // Corrected here
+        dateDebut: [new Date()],  // Initialize with a Date object
+  dateFin: [new Date()],
+        optionsReservation: [''],
+        equipement: [''],
+        nbrLocateurs: [''],
+        typeLogement: [''],
+        lit: [''],
+        chambre: [''],
+        salleDeBain: [''],
+        description: [''],
+        numero: [''],
+        adresse: [''],
+        ville: [''],
+        pays: [''],
+        imageFiles: [null]
+      });
+    }
+
+  step = 1;
+  category = '';
+  details: any = {};
+  descriptionData: any = {};
+  imageFiles: File[] = [];
 
 
-  ajouterAnnonce1() {
+
+
+ ajouterAnnonce1() {
     console.log('Request Data:', this.requestData); // Debugging
     const formData = this.preparedFormData(this.requestData);
     this.Annonceservice.addAppartement(formData).subscribe(
@@ -143,43 +173,6 @@ export class AddannonceComponent {
   }
   @ViewChild('selectfile') selectfile!: ElementRef<HTMLInputElement>;
 
-
- /* map!:any;
-  @ViewChild('map')
-   mapContainer!: ElementRef<HTMLElement>;
-  initMap(): void {
-    this.map = L.map('map', {
-      center: [35.9881, 9.9138],
-      zoom: 6.5
-    });
-    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      minZoom: 3,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    });
-
-    tiles.addTo(this.map);
-     // Add click event listener to the map
-     this.map.on('click', (event:any) => {
-      const { lat, lng } = event.latlng;
-      this.getAddressFromCoordinates(lat, lng);
-    });
-  }
-  getAddressFromCoordinates(latitude: number, longitude: number) {
-    const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`;
-
-    this.httpClient.get(url).subscribe((response: any) => {
-      const address = response.display_name;
-      const city = response.address.city || response.address.village || response.address.town || response.address.hamlet || '';
-      const country = response.address.country;
-
-      this.newCollocationFormGroup.controls['addresse'].setValue(address);
-      this.newCollocationFormGroup.controls['ville'].setValue(city);
-      this.newCollocationFormGroup.controls['pays'].setValue(country);
-    }, error => {
-      console.error('Error fetching reverse geocoding data:', error);
-    });
-  }*/
     ngAfterViewInit(): void {
       this.initMap();
 
@@ -201,54 +194,11 @@ export class AddannonceComponent {
 marker!: L.Marker; // Variable pour stocker le marqueur
 @ViewChild('map') mapContainer!: ElementRef<HTMLElement>;
 
-/*initMap(): void {
-  this.map = L.map('map', {
-    center: [35.9881, 9.9138], // Tunisie
-    zoom: 6.5
-  });
-
-  const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 18,
-    minZoom: 3,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  });
-
-  tiles.addTo(this.map);
-
-  // Définir l'icône personnalisée
-  const customIcon = L.icon({
-    iconUrl: '/assets/marker.png', // Chemin vers l'image
-    iconSize: [32, 32], // Taille du marqueur
-    iconAnchor: [16, 32], // Position d'ancrage
-    popupAnchor: [0, -32] // Position de la popup
-  });
-
-  // Ajouter un marqueur avec l'icône personnalisée
-  this.marker = L.marker([35.9881, 9.9138], { icon: customIcon }).addTo(this.map);
-
-  // Ajouter un événement de clic sur la carte
-  this.map.on('click', (event: any) => {
-    const { lat, lng } = event.latlng;
-
-    // Mettre à jour la position du marqueur
-    this.marker.setLatLng([lat, lng]);
-
-    // Obtenir l'adresse et la mettre dans le formulaire
-    this.getAddressFromCoordinates(lat, lng);
-
-
-    setTimeout(() => {
-      this.map.invalidateSize(); // Corrige l'affichage si l'élément était caché
-    }, 500);
-  });
-}
-*/
 initMap(): void {
   if (this.map) {
     return; // Évite d'initialiser plusieurs fois
   }
 
-  // Créer la carte (centrée par défaut en Tunisie si la géolocalisation échoue)
   this.map = L.map('map', {
     center: [35.9881, 9.9138],
     zoom: 6.5
@@ -318,14 +268,7 @@ getAddressFromCoordinates(latitude: number, longitude: number) {
 }
 
 
-   /* ajouterAnnonce() {
-    this.Annonceservice.addAppartement(this.requestData).subscribe(
-      response => {
-        console.log('Annonce ajoutée avec succès', response);
-      },
-      error => {
-        console.error('Erreur lors de l’ajout de la réservation', error);
-      }
-    );
-  }*/
-}
+
+  }
+
+

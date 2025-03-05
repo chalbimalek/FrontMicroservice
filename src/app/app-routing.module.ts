@@ -16,10 +16,20 @@ import { Annonce } from './component/model/Annonce';
 import { AnnonceResolveService } from './service/annonce-resolve.service';
 import { ReservationCalendarComponent } from './component/reservation-calendar/reservation-calendar.component';
 import { NotificationComponent } from './component/notification/notification.component';
+import { HeaderComponent } from './header/header.component';
+import { Step1Component } from './component/AjouterAnnonce/step1/step1.component';
+import { Step2Component } from './component/AjouterAnnonce/step2/step2.component';
+import { Step3Component } from './component/AjouterAnnonce/step3/step3.component';
+import { Step4Component } from './component/AjouterAnnonce/step4/step4.component';
+import { MapannoncesComponent } from './component/mapannonces/mapannonces.component';
+import { VerifyemailComponent } from './component/verifyemail/verifyemail.component';
+import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 
 const routes: Routes = [
   { path: '',   redirectTo: '/login', pathMatch: 'full' },
   {path:'login',component:LoginComponent},
+  {path:'header',component:HeaderComponent},
+
   {path:'home',component:HomeComponent, canActivate: [AuthGuardService]},
   {path:'signup',component:UserComponent},
   {path:'one',component:MicroOneComponent, canActivate: [AuthGuardService]},
@@ -27,6 +37,15 @@ const routes: Routes = [
   {path:'add',component:AddProductComponent, canActivate: [AuthGuardService]},
   {path:'addAnnonce',component:AddannonceComponent, canActivate: [AuthGuardService]},
   {path:'ListeAnnonce',component:ListeAnnonceComponent, canActivate: [AuthGuardService]},
+  {path:'step1',component:Step1Component, canActivate: [AuthGuardService]},
+  {path:'step2',component:Step2Component, canActivate: [AuthGuardService]},
+  {path:'step3',component:Step3Component, canActivate: [AuthGuardService]},
+  {path:'step4',component:Step4Component, canActivate: [AuthGuardService]},
+  {path:'map',component:MapannoncesComponent, canActivate: [AuthGuardService]},
+  {path:'verify-email',component:VerifyemailComponent},
+  {path:'reset-password',component:ResetPasswordComponent},
+
+
 
   { path: 'detailAnnonce/:id', component: DetailsAnnonceComponent, resolve: { annonce: AnnonceResolveService }, canActivate: [AuthGuardService] },
 

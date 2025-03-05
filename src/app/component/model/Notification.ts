@@ -4,4 +4,5 @@ export interface Notification {
   advertiserId: string;
   propid: string;
   reservationId:number;
+  createdAt:Date;
 }

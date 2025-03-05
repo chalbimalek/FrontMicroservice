@@ -4,8 +4,10 @@
   <input type="text" placeholder="First Name" [(ngModel)]="newUser.firstName" name="firstName" required>
   <input type="text" placeholder="Last Name" [(ngModel)]="newUser.lastName" name="lastName" required>
   <input type="password" placeholder="Password" [(ngModel)]="newUser.password" name="password" required>
-  <input type="text" placeholder="role" [(ngModel)]="newUser.role" name="role" required>
-
+  <div>
+    <button type="button" (click)="setRole('client')" [class.active]="newUser.role === 'client'">Client</button>
+    <button type="button" (click)="setRole('proprietaire')" [class.active]="newUser.role === 'proprietaire'">Propriétaire</button>
+  </div>
   <div *ngIf="errorMessage" style="color: red;"  class="error-message">{{ errorMessage }}</div>
 
   <button type="submit" [disabled]="userForm.invalid">Create User</button>

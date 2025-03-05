@@ -1,0 +1,66 @@
+<h3>Étape 2 : Détails de l'Appartement</h3>
+<form [formGroup]="form" (ngSubmit)="submitStep2()">
+  <div class="form-group">
+    <label for="montantContrubition">Montant Contribution</label>
+    <input type="number" id="montantContrubition" formControlName="montantContrubition" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <label for="date_debut">Date de Début</label>
+    <input type="date" id="date_debut" formControlName="date_debut" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <label for="date_Fin">Date de Fin</label>
+    <input type="date" id="date_Fin" formControlName="date_Fin" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <label for="nbrlocateurs">Nombre de Locateurs</label>
+    <input type="number" id="nbrlocateurs" formControlName="nbrlocateurs" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <label for="lit">Nombre de Lits</label>
+    <input type="number" id="lit" formControlName="lit" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <label for="chambre">Nombre de Chambres</label>
+    <input type="number" id="chambre" formControlName="chambre" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <label for="salledeBain">Nombre de Salles de Bain</label>
+    <input type="number" id="salledeBain" formControlName="salledeBain" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <label for="typeLogement">Type de Logement</label>
+    <select id="typeLogement" formControlName="typeLogement" class="form-control">
+      <option value="LOGEMENTENTIER">LOGEMENTENTIER</option>
+      <option value="chambre">chambre</option>
+      <!-- Ajoutez d'autres types selon les options disponibles -->
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="optionsReservation">Options de Réservation</label>
+    <select id="optionsReservation" formControlName="optionsReservation" class="form-control">
+      <option value="Reservationinstantanée">Reservation instantanée</option>
+      <option value="Animauxcompagnieautorisées">Animaux compagnie autorisées</option>
+      <!-- Ajoutez d'autres options selon vos besoins -->
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Équipements :</label>
+    <div *ngFor="let equipement of equipements">
+      <input type="checkbox" [value]="equipement.id" [checked]="selectedEquipements.includes(equipement.id)" (change)="toggleEquipement(equipement.id)">
+      {{ equipement.nom }}
+    </div>
+  </div>
+  <button type="button" class="btn btn-secondary" (click)="goBack()">Retour à l'étape 2</button>
+
+  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Soumettre l'étape 2</button>
+</form>

@@ -41,7 +41,7 @@
     <hr>
     <p class="h5">typeLogement  {{annonce.typeLogement}}</p>
 
-    <p class="h3" style="color: red;">nbrChambre  {{annonce.nbrChambre}} </p>
+    <p class="h3" style="color: red;">nbrChambre  {{annonce.chambre}} </p>
     <p class="h3" style="color: rgb(12, 45, 117);">User: {{ username }}</p>
 
     <hr>
@@ -59,15 +59,9 @@
             <label for="endDate">End Date:</label>
             <input type="date" id="endDate" [(ngModel)]="reservationData.endDate" name="endDate" >
           </div>
-
-          <div class="form-group">
-            <label for="totalPrice">Total Price:</label>
-            <input type="number" id="totalPrice" [(ngModel)]="reservationData.totalPrice" name="totalPrice" >
+          <div class="error-message" style="color: red; font-size: 14px; margin-top: 10px;">
+            {{ errorMessage }}
           </div>
-
-
-
-          <!-- Submit Button -->
           <button type="submit" >Create Reservation</button>
         </form>
       </div>
@@ -77,12 +71,30 @@
 
 
 
+  <div *ngIf="notifications.length > 0">
+    <h3>🔔 Notifications</h3>
+    <ul>
+      <li *ngFor="let notification of notifications">
+        {{ notification.message }}
+        {{notification.createdAt}}
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="notifications.length === 0">
+    <p>Aucune notification pour le moment.</p>
+  </div>
 
 
 
   </mat-card-content>
 </mat-card>
-
+<div class="single-widget">
+  <div class="map-container">
+    <div class="map-frame">
+      <div id="map" #map></div>
+    </div>
+  </div>
 
 
 </div>

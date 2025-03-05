@@ -19,7 +19,7 @@ export class LoginComponent {
       const response = await this.authService.login(this.username, this.password);
       localStorage.setItem('access_token', response.access_token);
       localStorage.setItem('refresh_token', response.refresh_token);
-      this.router.navigate(['/home']);
+      this.router.navigate(['/ListeAnnonce']);
     } catch (error) {
       this.errorMessage = 'Invalid username or password';
     }

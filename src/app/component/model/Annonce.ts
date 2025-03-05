@@ -13,13 +13,16 @@ export class Annonce {
   addresse: string;
   ville: string;
   pays: string;
-  date_disponiblite: Date;
-  nbrChambre: number;
+  date_debut: Date;
+  date_Fin: Date;
+
+  chambre: number;
   imageModels: FileHandle[]; // Changed from 'photos' to 'imageModels'
   typeLogement: TypeLogement;
   description: string;
   montantContrubition: number;
   nbrPersonne: number;
+  //categorie: string; // Ou utiliser un Enum pour la catégorie si tu préfères
   userId:string;
 
   constructor(
@@ -27,10 +30,11 @@ export class Annonce {
     addresse: string,
     ville: string,
     pays: string,
-    date_disponiblite: Date,
+    date_debut: Date,
+    date_Fin: Date,
     userId:string,
 
-    nbrChambre: number,
+    chambre: number,
     imageModels: FileHandle[],  // Modified to accept image models
     typeLogement: TypeLogement,
     description: string,
@@ -42,9 +46,11 @@ export class Annonce {
     this.addresse = addresse;
     this.ville = ville;
     this.pays = pays;
-    this.date_disponiblite = date_disponiblite;
+    this.date_debut = date_debut;
+    this.date_Fin = date_Fin;
+
     this.userId=userId;
-    this.nbrChambre = nbrChambre;
+    this.chambre = chambre;
     this.imageModels = imageModels; // Changed to map image models
     this.typeLogement = typeLogement;
     this.description = description;
